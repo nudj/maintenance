@@ -1,0 +1,48 @@
+version: '1.0'
+
+steps:
+
+  build_test:
+    title: Build Test
+    type: build
+    image_name: nudj/maintenance-test
+    working_directory: ${{main_clone}}
+    dockerfile: Dockerfile.dev
+
+  test:
+    title: Test
+    image: ${{build_test}}
+    working_directory: 'IMAGE_WORK_DIR'
+
+  build:
+    title: Build
+    type: build
+    image_name: nudj/maintenance
+    tag: latest
+    dockerfile: Dockerfile
+
+  push_latest:
+    title: Push Latest
+    type: push
+    candidate: '${{build}}'
+    tag: latest
+    credentials:
+      username: '${{dockerUsername}}'
+      password: '${{dockerPassword}}'
+    when:
+      branch:
+        only:
+          - develop
+
+  push_release:
+    title: Push Release
+    type: push
+    candidate: '${{build}}'
+    tag: 0.1.0
+    credentials:
+      username: '${{dockerUsername}}'
+      password: '${{dockerPassword}}'
+    when:
+      branch:
+        only:
+          - master
