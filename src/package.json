@@ -1,0 +1,31 @@
+{
+  "name": "maintenance",
+  "version": "0.0.1",
+  "description": "Nudj maintenance placeholder",
+  "main": "lib/server",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nudj/maintenance.git"
+  },
+  "author": "Nick Collings",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nudj/maintenance/issues"
+  },
+  "homepage": "https://github.com/nudj/maintenance#readme",
+  "standard": {
+    "ignore": [
+      "lib/server/assets"
+    ]
+  },
+  "dependencies": {
+    "consolidate": "^0.14.5",
+    "express": "^4.14.1",
+    "lodash": "^4.17.4",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "standard": "^9.0.0"
+  }
+}
