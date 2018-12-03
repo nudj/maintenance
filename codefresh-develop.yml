@@ -29,20 +29,3 @@ steps:
     credentials:
       username: '${{dockerUsername}}'
       password: '${{dockerPassword}}'
-    when:
-      branch:
-        only:
-          - develop
-
-  push_release:
-    title: Push Release
-    type: push
-    candidate: '${{build}}'
-    tag: 0.1.0
-    credentials:
-      username: '${{dockerUsername}}'
-      password: '${{dockerPassword}}'
-    when:
-      branch:
-        only:
-          - master
